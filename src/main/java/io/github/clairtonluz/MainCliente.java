@@ -9,7 +9,7 @@ import java.rmi.registry.Registry;
 /**
  * Created by clairton on 12/5/14.
  */
-public class Main {
+public class MainCliente {
 
     public static void main(String... args) {
         try {

@@ -7,7 +7,8 @@ import io.github.clairtonluz.constants.Replica;
  */
 public class ReplicaSecundaria extends Server {
 
-    public ReplicaSecundaria(Replica replica) {
-        super(replica);
+    public ReplicaSecundaria() {
+        super(Replica.SECUNDARIA);
     }
+
 }

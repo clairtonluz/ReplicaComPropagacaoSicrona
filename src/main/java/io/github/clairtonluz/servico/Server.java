@@ -19,12 +19,12 @@ import java.util.Properties;
 /**
  * Created by clairton on 12/5/14.
  */
-public class Server implements Compute {
+public abstract class Server implements Compute {
     private static final String HOME = System.getProperty("user.home");
     public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    private final String arquivoBasePath;
+    protected final String arquivoBasePath;
 
-    private Properties arquivoBase;
+    protected Properties arquivoBase;
     private File log;
     private Replica replica;
 
@@ -91,13 +91,5 @@ public class Server implements Compute {
         PropertiesUtil.INSTANCE.write(arquivoBase, arquivoBasePath);
         log(t);
         return result;
-    }
-
-    public static void main(String... args) {
-        Server replicaPrimaria = new Server(Replica.PRIMARIA);
-        Server replicaSecundaria = new Server(Replica.SECUNDARIA);
-
-        replicaPrimaria.start();
-        replicaSecundaria.start();
     }
 }

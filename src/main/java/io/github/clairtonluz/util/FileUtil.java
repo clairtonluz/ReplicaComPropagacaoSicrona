@@ -8,7 +8,9 @@ import java.nio.file.StandardOpenOption;
 /**
  * Created by clairton on 12/5/14.
  */
-public class FileUtil {
+public enum FileUtil {
+
+    INSTANCE;
 
     public String read(File file){
         StringBuilder sb = new StringBuilder();

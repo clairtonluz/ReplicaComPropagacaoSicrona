@@ -12,8 +12,16 @@ public enum PropertiesUtil {
 
     public Properties load(String filePath){
         Properties prop = new Properties();
+        File file = new File(filePath);
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
-        try (InputStream input = new FileInputStream(filePath)) {
+        try (InputStream input = new FileInputStream(file)) {
             prop.load(input);
         } catch (IOException e) {
             e.printStackTrace();

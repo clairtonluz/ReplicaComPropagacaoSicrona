@@ -3,6 +3,7 @@ package io.github.clairtonluz.task;
 import io.github.clairtonluz.model.Task;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Properties;
 
 /**
@@ -34,7 +35,9 @@ public class Depositar implements Task<Double>, Serializable {
         }
 
         arquivoBase.setProperty(conta, String.valueOf(novoSaldo));
+        arquivoBase.setProperty("ultimaAlteracao" + conta, LocalDateTime.now().toString());
         setSucesso(true);
+        System.out.printf("Deposito de %.2f na conta do(a) %s%n", valor, conta);
         return novoSaldo;
     }
 
@@ -51,6 +54,11 @@ public class Depositar implements Task<Double>, Serializable {
     @Override
     public void setArquivoBase(Properties arquivoBase) {
         this.arquivoBase = arquivoBase;
+    }
+
+    @Override
+    public String getConta() {
+        return conta;
     }
 
     public void setSucesso(boolean sucesso) {

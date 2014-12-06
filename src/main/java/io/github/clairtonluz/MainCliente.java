@@ -21,11 +21,11 @@ public class MainCliente {
             Cliente caio = new Cliente("Caio");
             Cliente felipe = new Cliente("Felipe");
 
-            System.out.println("D SALDO = " + banco.executeTask(clairton.depositar(100)));
-            System.out.println("D SALDO = " + banco.executeTask(rafael.depositar(100)));
-            System.out.println("D SALDO = " + banco.executeTask(caio.depositar(100)));
-            System.out.println("D SALDO = " + banco.executeTask(felipe.depositar(100)));
-            System.out.println("S SALDO = " + banco.executeTask(clairton.sacar(100)));
+            System.out.println("D SALDO = " + banco.executeTask(clairton.depositar(1000)));
+            System.out.println("D SALDO = " + banco.executeTask(rafael.depositar(1000)));
+            System.out.println("D SALDO = " + banco.executeTask(caio.depositar(1000)));
+            System.out.println("D SALDO = " + banco.executeTask(felipe.depositar(1000)));
+            System.out.println("S SALDO = " + banco.executeTask(clairton.sacar(1000)));
             System.out.println("S SALDO = " + banco.executeTask(caio.sacar(100)));
             System.out.println("SALDO = " + banco.executeTask(caio.saldo()));
             System.out.println("SALDO = " + banco.executeTask(clairton.saldo()));

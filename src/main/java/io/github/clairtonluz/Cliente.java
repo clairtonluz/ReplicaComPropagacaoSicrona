@@ -16,17 +16,13 @@ public class Cliente {
     }
 
     public Depositar depositar(double valor) throws java.rmi.RemoteException {
-        synchronized (this) {
             Depositar depositar = new Depositar(conta, valor);
             return depositar;
-        }
     }
 
     public Sacar sacar(double valor) throws java.rmi.RemoteException {
-        synchronized (this) {
             Sacar sacar = new Sacar(conta, valor);
             return sacar;
-        }
     }
 
     public Saldo saldo() throws java.rmi.RemoteException {

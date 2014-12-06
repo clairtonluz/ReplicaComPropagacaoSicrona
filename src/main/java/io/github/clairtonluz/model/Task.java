@@ -10,4 +10,5 @@ public interface Task<T> {
     String getTipo();
     boolean isSucesso();
     void setArquivoBase(Properties arquivoBase);
+    String getConta();
 }

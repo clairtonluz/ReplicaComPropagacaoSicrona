@@ -67,6 +67,8 @@ public abstract class Server implements Compute {
         sb.append(t.isSucesso() ? " [SUCESSO] " : " [FAIL] ");
         sb.append("TIPO: ");
         sb.append(t.getTipo().toUpperCase());
+        sb.append(" USUARIO: ");
+        sb.append(t.getConta());
 
         sb.append(System.getProperty("line.separator"));
         FileUtil.INSTANCE.write(log, sb.toString());

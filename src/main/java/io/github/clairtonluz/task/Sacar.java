@@ -3,6 +3,7 @@ package io.github.clairtonluz.task;
 import io.github.clairtonluz.model.Task;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Properties;
 
 /**
@@ -29,10 +30,12 @@ public class Sacar implements Task<Double>, Serializable {
         double novoSaldo = valor;
         String saldo = arquivoBase.getProperty(conta);
         if (saldo != null && !saldo.isEmpty()) {
-            novoSaldo += Double.parseDouble(saldo);
+            novoSaldo -= Double.parseDouble(saldo);
         }
-       arquivoBase.setProperty(conta, String.valueOf(novoSaldo));
+        arquivoBase.setProperty(conta, String.valueOf(novoSaldo));
+        arquivoBase.setProperty("ultimaAlteracao" + conta, LocalDateTime.now().toString());
         setSucesso(true);
+        System.out.printf("Saque de %.2f na conta do(a) %s%n", valor, conta);
         return novoSaldo;
     }
 
@@ -53,5 +56,10 @@ public class Sacar implements Task<Double>, Serializable {
 
     public void setSucesso(boolean sucesso) {
         this.sucesso = sucesso;
+    }
+
+    @Override
+    public String getConta() {
+        return conta;
     }
 }

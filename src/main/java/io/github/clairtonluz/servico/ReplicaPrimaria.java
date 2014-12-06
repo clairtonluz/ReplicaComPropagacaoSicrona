@@ -21,10 +21,14 @@ public class ReplicaPrimaria extends Server {
 
     @Override
     public <T> T executeTask(Task<T> t) throws RemoteException {
-        T result = super.executeTask(t);
-
+        T result;
         if(t.getTipo().equalsIgnoreCase("Depositar") || t.getTipo().equalsIgnoreCase("Sacar")) {
-            executarEmReplicaSecundaria(t);
+            synchronized (this) {
+                result = super.executeTask(t);
+                executarEmReplicaSecundaria(t);
+            }
+        } else {
+            result = executarEmReplicaSecundaria(t);
         }
 
         return result;

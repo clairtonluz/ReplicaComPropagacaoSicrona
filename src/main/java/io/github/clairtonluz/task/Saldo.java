@@ -30,6 +30,7 @@ public class Saldo implements Task<Double>, Serializable {
             saldo = Double.parseDouble(valor);
         }
         setSucesso(true);
+        System.out.printf("Saldo de %.2f na conta do(a) %s%n", saldo, conta);
         return saldo;
     }
 
@@ -54,5 +55,10 @@ public class Saldo implements Task<Double>, Serializable {
 
     public void setArquivoBase(Properties arquivoBase) {
         this.arquivoBase = arquivoBase;
+    }
+
+    @Override
+    public String getConta() {
+        return conta;
     }
 }
